@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Издательства-Книги</title>
+</head>
+<body>
+<div class="container">
+ <div class="row justify-content-start w-50 m-2">
+    <div class="col-sm">
+<div class="alert alert-primary" role="alert">
+  Список друзей и книг у них
+</div>
+	<ul>
+		{% for friend in object_list %}
+		    <li>{{ friend.name }}</li>
+			     	 <ul>
+                    {% for book in friend.books.all %}
+					    <a href="book/{{book.id}}/">{{ book.title }}</a>
+                        <!--<li> {{ book.title }}</li>-->
+                    {% endfor %}
+                </ul>
+		{% endfor %}
+	</ul>
+	
+</div>
+</div>
+
+ <div class="row justify-content-start w-50 m-2">
+    <div class="col-sm">
+<div class="alert alert-primary" role="alert">
+  <a href='/friend/create'>Добавить друга</a>
+</div>
+</div>
+</div>
+
+ <div class="row justify-content-start w-50 m-2">
+    <div class="col-sm">
+<div class="alert alert-success" role="alert">
+  <a href='/books'>Перейти к списку всех книг и дать книгу другу</a>
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>
